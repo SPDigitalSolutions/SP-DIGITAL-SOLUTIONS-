@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP Digital Solutions | Premium Tech & Software Agency</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700&display=swap');
+
+        /* CSS Variables for Consistent Theme */
+        :root {
+            --bg-dark: #0B0F19;
+            --bg-card: #111827;
+            --bg-section: #0D1321;
+            --text-main: #D1D5DB;
+            --text-muted: #9CA3AF;
+            --cyan-primary: #22D3EE;
+            --cyan-hover: #06B6D4;
+            --blue-gradient: linear-gradient(to right, #22D3EE, #3B82F6);
+            --insta-gradient: linear-gradient(to right, #8B5CF6, #EC4899);
+        }
+
+        /* Global Reset & Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection {
+            background-color: var(--cyan-primary);
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header / Navbar */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(11, 15, 25, 0.8);
+            border-bottom: 1px solid #1F2937;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+        }
+        
+        /* Logo Layout Fix */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Space between logo image and text */
+        }
+        .brand-logo img {
+            height: 2.5rem; /* Image height fixed */
+            width: 2.5rem;  /* Width fixed for 1:1 ratio */
+            border-radius: 0.5rem;
+            object-fit: cover;
+            display: block;
+        }
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--blue-gradient);
+        
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+        .nav-link:hover {
+            color: var(--cyan-primary);
+            transition: color 0.2s;
+        }
+        .insta-icon {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            transition: color 0.2s;
+        }
+        .insta-icon:hover {
+            color: #EC4899;
+        }
+        .btn-gradient {
+            background: var(--blue-gradient);
+            color: #fff;
+            padding: 0.625rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.2);
+            transition: opacity 0.2s;
+        }
+        .btn-gradient:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 6rem 0 5rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1200px;
+            height: 24rem;
+            background: linear-gradient(to right, rgba(34,211,238,0.1), rgba(59,130,246,0.1));
+            filter: blur(120px);
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(34, 211, 238, 0.1);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            color: var(--cyan-primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.375rem 1rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .hero-title { font-size: 3.75rem; }
+        }
+        .hero-title-gradient {  background: linear-gradient(to right, #22D3EE, #2DD4BF, #3B82F6);
+        }
+        .hero-desc {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 48rem;
+            margin: 0 auto 2.5rem;
+        }
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .hero-actions { flex-direction: row; }
+        }
+        .btn-cyan {
+            background-color: var(--cyan-primary);
+            color: #0F172A;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.2);
+            transition: background-color 0.2s;
+        }
+        .btn-cyan:hover {
+            background-color: var(--cyan-hover);
+        }
+        .btn-outline-insta {
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            background-color: rgba(15, 23, 42, 0.5);
+            color: #fff;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            transition: border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-outline-insta:hover {
+            border-color: #EC4899;
+        }
+
+        /* Services Section */
+        .section-padding {
+            padding: 5rem 0;
+        }
+        .bg-alt {
+            background-color: var(--bg-section);
+            border-top: 1px solid #111827;
+        }
+        .section-header {
+            text-align: center;
+            max-width: 42rem;
+            margin: 0 auto 4rem;
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .section-desc {
+            color: var(--text-muted);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1F2937;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: all 0.2s;
+        }
+        .service-card:hover {
+            border-color: rgba(34, 211, 238, 0.4);
+        }
+        .icon-box {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+        .service-card:nth-child(1) .icon-box { background: rgba(34,211,238,0.1); color: #22D3EE; }
+        .service-card:nth-child(2) .icon-box { background: rgba(45,212,191,0.1); color: #2DD4BF; }
+        .service-card:nth-child(3) .icon-box { background: rgba(59,130,246,0.1); color: #3B82F6; }
+        .service-card:nth-child(4) .icon-box { background: rgba(168,85,247,0.1); color: #A855F7; }
+
+        .service-card:hover .icon-box { color: #0F172A; }
+        .service-card:nth-child(1):hover .icon-box { background: #22D3EE; }
+        .service-card:nth-child(2):hover .icon-box { background: #2DD4BF; }
+        .service-card:nth-child(3):hover .icon-box { background: #3B82F6; }
+        .service-card:nth-child(4):hover .icon-box { background: #A855F7; }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            line-height: 1.625;
+        }
+
+        /* Demos Section */
+        .demos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .demos-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .demo-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1F2937;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        .demo-card:hover { border-color: rgba(34, 211, 238, 0.3); }
+        .demo-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            display: inline-block;
+        }
+        .db-cyan { background: rgba(34,211,238,0.1); color: #22D3EE; }
+        .db-teal { background: rgba(45,212,191,0.1); color: #2DD4BF; }
+        .db-blue { background: rgba(59,130,246,0.1); color: #3B82F6; }
+
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 1rem 0 0.5rem;
+        }
+        .demo-desc {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-demo-launch {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: #1F2937;
+            padding: 0.625rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .btn-demo-launch:hover { background-color: #374151; }
+        .btn-demo-book {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #0F172A;
+            background-color: var(--cyan-primary);
+            padding: 0.625rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .btn-demo-book:hover { background-color: var(--cyan-hover); }
+        .btn-icon { margin-left: 0.5rem; font-size: 0.75rem; }
+
+        /* Why Choose Us Section */
+        .why-us-container {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        @media (min-width: 768px) {
+            .why-us-container { grid-template-columns: repeat(2, 1fr); }
+        }
+        .why-us-left h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+        }
+        .feature-check {
+            color: var(--cyan-primary);
+            font-size: 1.25rem;
+        }
+        .feature-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .feature-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Branding Card Fix */
+        .brand-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1F2937;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        .brand-card img {
+            height: 4rem;
+            width: 4rem;
+            margin: 0 auto 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            display: block;
+            object-fit: cover;
+        }
+        .brand-card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+        .brand-card-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .btn-insta-full {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--insta-gradient);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            width: 100%;
+            transition: opacity 0.2s;
+        }
+        .btn-insta-full:hover { opacity: 0.9; }
+
+        /* Contact Form */
+        .contact-section {
+            padding: 5rem 0;
+        }
+        .form-wrapper {
+            max-width: 28rem;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            border: 1px solid #1F2937;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .form-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        .form-input, .form-select {
+            width: 100%;
+            background-color: var(--bg-dark);
+            border: 1px solid #1F2937;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #fff;
+            font-size: 0.875rem;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--cyan-primary);
+        }
+        .btn-submit {
+            width: 100%;
+            background: var(--blue-gradient);
+            color: #fff;
+            font-weight: 700;
+            padding: 0.875rem;
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.2);
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-submit:hover { opacity: 0.95; }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #111827;
+            padding: 2rem 0;
+            background-color: var(--bg-dark);
+        }
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #6B7280;
+        }
+                .text-transparent {
+ -webkit-background-clip: text;
+            
+          background-clip: text;
+            color: transparent;
+            
+        }
+
+        @media (min-width: 768px) {
+            .footer-container { flex-direction: row; }
+        }
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .footer-links a:hover { color: var(--cyan-primary); }
+        .footer-links a.insta:hover { color: #EC4899; }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="brand-logo">
+                <!-- Image aur layout fix kiya gaya hai -->
+ 
+                
+                
+                <img src="https://i.ibb.co/rfL20bQL/1780586088903.jpg" alt="SP Digital Solutions Logo">
+                <span class="brand-title text-transparent">SP Digital Solutions</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#demos" class="nav-link">Demos & Projects</a>
+                <a href="#why-us" class="nav-link">Why Choose Us</a>
+                <a href="https://www.instagram.com/sp_digitalsolutions" target="_blank" class="insta-icon" title="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#contact" class="btn-gradient">Get Free Demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="container" style="max-width: 960px; position: relative; z-index: 10;">
+            <span class="badge">
+                🚀 Shaping Businesses & Students Digitally
+            </span>
+            <h1 class="hero-title">
+                Aapka Business Aur Projects, Ab Online.<br>
+                <span class="hero-title-gradient text-transparent">Next-Gen Software Solutions</span>
+            </h1>
+            <p class="hero-desc">
+                Hum banate hain professional websites, custom management software, aur BCA/MCA/B.Tech ke liye <strong>A+ Grade College Projects</strong>.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-cyan">
+                    Talk To Us (Free Consultation)
+                </a>
+                <a href="https://www.instagram.com/sp_digitalsolutions" target="_blank" class="btn-outline-insta">
+                    <i class="fa-brands fa-instagram" style="color: #EC4899;"></i> Follow On Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+   <section id="services" class="section-padding bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hum Kya-Kya Banate Hain?</h2>
+                <p class="section-desc">Local business automation se lekar college academic submissions tak—sab kuch ek jagah.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3 class="card-title">Custom Websites</h3>
+                    <p class="card-desc">Premium landing pages, business websites aur e-commerce platforms aapki dukan ke liye.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="card-title">Custom Software</h3>
+                    <p class="card-desc">Billing systems, inventory management, aur tailored tools jo aapke business ke mutabik kaam karein.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title">College Projects</h3>
+                    <p class="card-desc">BCA, MCA, B.Tech ke liye full working projects with complete source code, documentation, aur setup support.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="card-title">Mobile Apps</h3>
+                    <p class="card-desc">Fast and interactive Android & iOS applications jo customer management ko aasan banati hain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demos & Projects Section -->
+    <section id="demos" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Ready-to-Deploy Products</h2>
+                <p class="section-desc">Humare banaye gaye kuch popular solutions jinhe aap turant setup karwa sakte hain.</p>
+            </div>
+            <div class="demos-grid">
+                <!-- Demo 1 -->
+                <div class="demo-card">
+                    <span class="demo-badge db-cyan">School/Coaching</span>
+                    <h3 class="demo-title">Notice & Homework App</h3>
+                    <p class="demo-desc">Parents tak homework aur notices bina kisi WhatsApp group ke jhanjhat ke bhejein.</p>
+                    <a href="school-demo" class="btn-demo-launch">
+                        Launch Demo <i class="fa-solid fa-arrow-up-right-from-square btn-icon" style="color: #22D3EE;"></i>
+                    </a>
+                </div>
+                <!-- Demo 2 -->
+                <div class="demo-card">
+                    <span class="demo-badge db-teal">Retail Shops</span>
+                    <h3 class="demo-title">Digital Menu & Khata</h3>
+                    <p class="demo-desc">QR Code menu scan karke items purchase aur udhaar ka hisab rakhne ka smart application.</p>
+                    <a href="shop-demo" class="btn-demo-launch">
+                        Launch Demo <i class="fa-solid fa-arrow-up-right-from-square btn-icon" style="color: #2DD4BF;"></i>
+                    </a>
+                </div>
+                <!-- Demo 3 -->
+                <div class="demo-card">
+                    <span class="demo-badge db-blue">Academic Projects</span>
+                    <h3 class="demo-title">College Final Year Projects</h3>
+                    <p class="demo-desc">MERN stack, Python, Django, ya Android par unique aur full working major/minor projects.</p>
+                    <a href="#contact" class="btn-demo-book">
+                        Book Your Project <i class="fa-solid fa-code btn-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="section-padding bg-alt">
+        <div class="container">
+            <div class="why-us-container">
+                <div class="why-us-left">
+                    <h2>Humare Sath Kaam Kyun Karein?</h2>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-check"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="feature-title">Premium Logo & Branding</h4>
+                                <p class="feature-desc">Hum aapke software ke sath aapko ek professional corporate brand identity bhi dete hain.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="feature-title">Students Special Discount</h4>
+                                <p class="feature-desc">College projects ke liye market se aadhi keemat par code explanation ke sath support.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="feature-title">7-Day Money Back / Free Trial</h4>
+                                <p class="feature-desc">Business owners ke liye risk-free trial. Kaam pasand aane par hi deal lock karein.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Social Media section logo fix -->
+                <div class="brand-card">
+                    <img src="https://i.ibb.co/rfL20bQL/1780586088903.jpg" alt="SP Digital Solutions Logo Image">
+                    <p class="brand-card-title">Connect on Social Media</p>
+                    <p class="brand-card-desc">Update aur tech reels dekhne ke liye Instagram par follow karein.</p>
+                    <a href="https://www.instagram.com/sp_digitalsolutions" target="_blank" class="btn-insta-full">
+                        <i class="fa-brands fa-instagram"></i> @sp_digitalsolutions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <h3 class="form-title">Get Started Now</h3>
+                <p class="form-desc">Business detail ya College Project requirement bhejien.</p>
+                
+                <form action="mailto:surajpatel2026@zohomail.in" method="GET" enctype="text/plain">
+                    <div class="form-group">
+                        <label class="form-label">Aapka Naam</label>
+                        <input type="text" name="subject" placeholder="e.g., Suraj Patel" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Requirement Type</label>
+                        <select name="body" class="form-select">
+                            <option>Local Business Website / App</option>
+                            <option>Custom Billing / Management Software</option>
+                            <option>College Final Year Project Support</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        Send Email Requirement
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 SP Digital Solutions. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/sp_digitalsolutions" target="_blank" class="insta"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="mailto:surajpatel2026@zohomail.in"><i class="fa-solid fa-envelope"></i> Email</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
